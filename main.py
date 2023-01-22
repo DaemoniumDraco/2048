@@ -20,6 +20,8 @@ def check_Grid():
 	"""Checks if grid is full, and locates and returns a list of empty spaces in grid to insert values into"""
 	global emptySpaces
 	emptySpaces = []
+	playCanBeMade = False
+
 
 	for i in range(4):
 		for j in range(4):
@@ -31,12 +33,33 @@ def check_Grid():
 				#print(f"Final #score: {#score}")
 				quit()  #Implement way to start new game later or something
 
+			elif i == 0:
+				if grid[i][j] == grid[i+1][j]:
+					playCanBeMade = True
+
+				if j < 3:
+					if grid[i][j] == grid[i][j+1]:
+						playCanBeMade = True
+				
+			elif i == 1:
+				if grid[i][j] == grid[i+1][j]:
+					playCanBeMade = True
+
+				if j < 3:
+					if grid[i][j] == grid[i][j+1]:
+						playCanBeMade = True
+				
+			elif i == 2:
+				if grid[i][j] == grid[i+1][j]:
+					playCanBeMade = True
+
+				if j < 3:
+					if grid[i][j] == grid[i][j+1]:
+						playCanBeMade = True
+				
 	#print(emptySpaces)
 
-	"""Implement check for if a play can be mde so that an full grid does not end the game early"""
-
-
-	if emptySpaces == []:
+	if emptySpaces == [] and playCanBeMade == False:
 		print("No empty spaces left!")
 		#print(f"Final #score: {score}")
 		print("Gameover!")
